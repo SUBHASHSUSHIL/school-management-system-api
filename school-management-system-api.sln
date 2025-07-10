@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36212.18 d17.14
+VisualStudioVersion = 17.14.36212.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Domain", "SMS.Domain\SMS.Domain.csproj", "{F143BF1D-B7D5-4AFE-8A3F-9E80EEBEB299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.API", "SMS.API\SMS.API.csproj", "{EA03B3AD-F4D1-44AA-882D-28E955DC6D12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F143BF1D-B7D5-4AFE-8A3F-9E80EEBEB299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F143BF1D-B7D5-4AFE-8A3F-9E80EEBEB299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F143BF1D-B7D5-4AFE-8A3F-9E80EEBEB299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA03B3AD-F4D1-44AA-882D-28E955DC6D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA03B3AD-F4D1-44AA-882D-28E955DC6D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA03B3AD-F4D1-44AA-882D-28E955DC6D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA03B3AD-F4D1-44AA-882D-28E955DC6D12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

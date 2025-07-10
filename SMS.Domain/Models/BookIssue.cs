@@ -46,8 +46,6 @@ namespace SMS.Domain.Models
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
 
-        [ForeignKey("IssuedBy")]
-        public virtual User Issuer { get; set; }
     }
 
     public enum IssueStatus
