@@ -69,13 +69,13 @@ namespace SMS.API.Services
             return user;
         }
 
-        public async Task<User> UpdateUserAsync(User user)
+        public async Task<User> UpdateUserAsync(int userId, User user)
         {
             var existingUser = await _applicationDbContext.Users
-                .FirstOrDefaultAsync(x => x.UserId == user.UserId);
+                .FirstOrDefaultAsync(x => x.UserId == userId);
             if (existingUser == null)
-                {
-                throw new KeyNotFoundException($"User with ID {user.UserId} not found.");
+            {
+                throw new KeyNotFoundException($"User with ID {userId} not found.");
             }
             existingUser.Username = user.Username;
             existingUser.PasswordHash = user.PasswordHash;
