@@ -24,7 +24,7 @@ namespace SMS.API.Controllers
                 var users = await _userService.GetAllUsersAsync(pageNumber, pageSize);
                 if (users == null || !users.Any())
                 {
-                    return NotFound("No users found.");
+                    return Ok("This table is empty.");
                 }
                 return Ok(users);
             }

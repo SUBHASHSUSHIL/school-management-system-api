@@ -24,7 +24,7 @@ namespace SMS.API.Controllers
                 var academicYears = await _academicYearService.GetAllAcademicYearsAsync(pageNumber, pageSize);
                 if (academicYears == null || !academicYears.Any())
                 {
-                    return NotFound("No academic years found.");
+                    return Ok("This table is empty.");
                 }
                 return Ok(academicYears);
             }

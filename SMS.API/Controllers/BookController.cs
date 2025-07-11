@@ -24,7 +24,7 @@ namespace SMS.API.Controllers
                 var books = await _bookService.GetBooksAsync(pageNumber, pageSize);
                 if (books == null || !books.Any())
                 {
-                    return NotFound("No books found.");
+                    return Ok("This table is empty.");
                 }
                 return Ok(books);
             }

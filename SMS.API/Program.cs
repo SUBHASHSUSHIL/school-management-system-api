@@ -17,8 +17,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAttendanceService, AttendanceService>();
+builder.Services.AddScoped<IAcademicYearService, AcademicYearService>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IBookCategoryService, BookCategoryService>();
+builder.Services.AddScoped<IBookIssueService, BookIssueService>();
+builder.Services.AddScoped<IClassService, ClassService>();
 
 
 var app = builder.Build();

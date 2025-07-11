@@ -24,7 +24,7 @@ namespace SMS.API.Controllers
                 var bookCategories = await _bookCategoryService.GetBookCategoriesAsync(pageNumber, pageSize);
                 if (bookCategories == null || !bookCategories.Any())
                 {
-                    return NotFound("No book categories found.");
+                    return Ok("This table is empty.");
                 }
                 return Ok(bookCategories);
             }

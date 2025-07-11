@@ -23,7 +23,7 @@ namespace SMS.API.Controllers
                 var attendances = await _attendanceService.GetAttendanceAsync(pageNumber, pageSize);
                 if (attendances == null || !attendances.Any())
                 {
-                    return NotFound("No attendances found.");
+                    return Ok("This table is empty.");
                 }
                 return Ok(attendances);
             }
