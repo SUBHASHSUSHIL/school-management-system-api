@@ -67,7 +67,7 @@ namespace SMS.API.Controllers
                     return BadRequest("User data is required.");
                 }
                 var createdUser = await _userService.CreateUserAsync(user);
-                return CreatedAtAction(nameof(GetUserById), new { userId = createdUser.UserId }, createdUser);
+                return Ok(createdUser);
             }
             catch (Exception ex)
             {

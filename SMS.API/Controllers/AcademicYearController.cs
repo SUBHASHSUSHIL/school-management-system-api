@@ -62,7 +62,7 @@ namespace SMS.API.Controllers
             try
             {
                 var createdAcademicYear = await _academicYearService.CreateAcademicYearAsync(academicYear);
-                return CreatedAtAction(nameof(GetAcademicYearById), new { academicYearId = createdAcademicYear.AcademicYearId }, createdAcademicYear);
+                return Ok(createdAcademicYear);
             }
             catch (Exception ex)
             {

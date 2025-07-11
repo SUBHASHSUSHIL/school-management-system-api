@@ -16,6 +16,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAttendanceService, AttendanceService>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IBookCategoryService, BookCategoryService>();
 
 
 var app = builder.Build();

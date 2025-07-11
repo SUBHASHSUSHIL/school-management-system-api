@@ -66,7 +66,7 @@ namespace SMS.API.Controllers
                     return BadRequest("Attendance data is required.");
                 }
                 var createdAttendance = await _attendanceService.CreateAttendanceAsync(attendance);
-                return CreatedAtAction(nameof(GetAttendances), new { id = createdAttendance.AttendanceId }, createdAttendance);
+                return Ok(createdAttendance);
             }
             catch (Exception ex)
             {
