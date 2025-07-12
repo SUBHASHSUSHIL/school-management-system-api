@@ -12,7 +12,7 @@ namespace SMS.API.Services.Interfaces
         Task<List<ClassDto>> GetClassesAsync(int pageNumber, int pageSize);
         Task<ClassDto> GetClassByIdAsync(int classId);
         Task<CreateClassDto> CreateClassAsync(CreateClassDto createClassDto);
-        Task<bool> UpdateClassAsync(int classId, CreateClassDto updateClassDto);
+        Task<UpdateClassDto> UpdateClassAsync(int classId, UpdateClassDto updateClassDto);
         Task<bool> DeleteClassAsync(int classId);
     }
 }

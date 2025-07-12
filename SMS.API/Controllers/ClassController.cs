@@ -71,7 +71,7 @@ namespace SMS.API.Controllers
         }
 
         [HttpPut("{classId}")]
-        public async Task<IActionResult> UpdateClass(int classId, [FromBody] CreateClassDto updateClassDto)
+        public async Task<IActionResult> UpdateClass(int classId, [FromBody] UpdateClassDto updateClassDto)
         {
             if (updateClassDto == null)
             {
@@ -80,7 +80,7 @@ namespace SMS.API.Controllers
             try
             {
                 var result = await _classService.UpdateClassAsync(classId, updateClassDto);
-                if (!result)
+                if (result == null)
                 {
                     return NotFound($"Class with ID {classId} not found.");
                 }

@@ -36,4 +36,20 @@ namespace SMS.API.DTOs
 
         public string Description { get; set; }
     }
+
+    public class UpdateClassDto
+    {
+        public int ClassId { get; set; }
+        [Required(ErrorMessage = "Class name is required.")]
+        [MaxLength(50, ErrorMessage = "Class name cannot exceed 50 characters.")]
+        public string ClassName { get; set; }
+
+        [Required(ErrorMessage = "Class numeric value is required.")]
+        [Range(1, 12, ErrorMessage = "Class numeric must be between 1 to 12.")]
+        public int ClassNumeric { get; set; }
+
+        public int? TeacherInChargeId { get; set; }
+
+        public string Description { get; set; }
+    }
 }

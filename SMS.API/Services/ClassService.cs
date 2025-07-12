@@ -81,7 +81,7 @@ namespace SMS.API.Services
             }).ToList();
         }
 
-        public async Task<bool> UpdateClassAsync(int classId, CreateClassDto updateClassDto)
+        public async Task<UpdateClassDto> UpdateClassAsync(int classId, UpdateClassDto updateClassDto)
         {
             var classEntity = await _applicationDbContext.Classes
                 .FirstOrDefaultAsync(c => c.ClassId == classId);
@@ -97,7 +97,14 @@ namespace SMS.API.Services
 
             _applicationDbContext.Classes.Update(classEntity);
             await _applicationDbContext.SaveChangesAsync();
-            return true;
+            return new UpdateClassDto
+            {
+                ClassId = classEntity.ClassId,
+                ClassName = classEntity.ClassName,
+                ClassNumeric = classEntity.ClassNumeric,
+                TeacherInChargeId = classEntity.TeacherInChargeId,
+                Description = classEntity.Description
+            };
         }
     }
 }
