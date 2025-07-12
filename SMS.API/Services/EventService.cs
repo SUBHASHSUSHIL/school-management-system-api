@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 using SMS.API.Data;
 using SMS.API.DTOs;
 using SMS.API.Services.Interfaces;
@@ -110,9 +111,38 @@ namespace SMS.API.Services
             return eventEntity;
         }
 
-        public Task<CreateEventDto> UpdateEventAsync(int id, CreateEventDto updateEventDto)
+        public async Task<CreateEventDto> UpdateEventAsync(int id, CreateEventDto updateEventDto)
         {
-            throw new NotImplementedException();
+            var getEvent = await _applicationDbContext.Events.FindAsync(id);
+            if (getEvent == null)
+            {
+                throw new KeyNotFoundException($"Event with Id {id} not found.");
+            }
+            getEvent.Title = updateEventDto.Title;
+            getEvent.Description = updateEventDto.Description;
+            getEvent.StartDate = updateEventDto.StartDate;
+            getEvent.EndDate = updateEventDto.EndDate;
+            getEvent.StartTime = updateEventDto.StartTime;
+            getEvent.EndTime = updateEventDto.EndTime;
+            getEvent.Location = updateEventDto.Location;
+            getEvent.Organizer = updateEventDto.Organizer;
+            getEvent.CreatedBy = updateEventDto.CreatedBy;
+            getEvent.CreatedAt = updateEventDto.CreatedAt;
+            _applicationDbContext.Events.Update(getEvent);
+            await _applicationDbContext.SaveChangesAsync();
+            return new CreateEventDto
+            {
+                Title = getEvent.Title,
+                Description = getEvent.Description,
+                StartDate = getEvent.StartDate,
+                EndDate = getEvent.EndDate,
+                StartTime = getEvent.StartTime,
+                EndTime = getEvent.EndTime,
+                Location = getEvent.Location,
+                Organizer = getEvent.Organizer,
+                CreatedBy = getEvent.CreatedBy,
+                CreatedAt = getEvent.CreatedAt
+            };
         }
     }
 }

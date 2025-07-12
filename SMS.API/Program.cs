@@ -23,6 +23,7 @@ builder.Services.AddScoped<IBookCategoryService, BookCategoryService>();
 builder.Services.AddScoped<IBookIssueService, BookIssueService>();
 builder.Services.AddScoped<IClassService, ClassService>();
 builder.Services.AddScoped<IClassSubjectService, ClassSubjectService>();
+builder.Services.AddScoped<IEventService, EventService>();
 
 
 var app = builder.Build();

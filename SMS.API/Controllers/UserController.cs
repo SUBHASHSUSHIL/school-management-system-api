@@ -113,7 +113,6 @@ namespace SMS.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
-
         }
     }
 }
