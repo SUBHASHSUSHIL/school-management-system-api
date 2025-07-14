@@ -50,23 +50,7 @@ namespace SMS.API.DTOs
         public DateTime RecordedAt { get; set; }
     }
 
-    public class ExamResultUpdateDto
+    public class ExamResultUpdateDto : ExamResultCreateDto
     {
-        [Required]
-        public int ResultId { get; set; }
-        [Required]
-        public int StudentId { get; set; }
-        [Required]
-        public int ExamId { get; set; }
-        [Required]
-        public int SubjectId { get; set; }
-        [Required]
-        [Range(0, 100)]
-        public decimal MarksObtained { get; set; }
-        [MaxLength(5)]
-        public string Grade { get; set; }
-        public string Remarks { get; set; }
-        [Required]
-        public int RecordedBy { get; set; }
     }
 }
