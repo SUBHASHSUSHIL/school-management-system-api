@@ -82,21 +82,21 @@ namespace SMS.API.Services
             var books = await _applicationDbContext.Books.OrderByDescending(b => b.BookId)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
-                .ToListAsync();
-            return books.Select(b => new BookDto
-            {
-                BookId = b.BookId,
-                Title = b.Title,
-                Author = b.Author,
-                ISBN = b.ISBN,
-                Publisher = b.Publisher,
-                Edition = b.Edition,
-                BookCategoryId = b.CategoryId,
-                Price = b.Price,
-                Quantity = b.Quantity,
-                AvailableQuantity = b.AvailableQuantity,
-                ShelfNumber = b.ShelfNumber
-            }).ToList();
+                .Select(b => new BookDto
+                {
+                    BookId = b.BookId,
+                    Title = b.Title,
+                    Author = b.Author,
+                    ISBN = b.ISBN,
+                    Publisher = b.Publisher,
+                    Edition = b.Edition,
+                    BookCategoryId = b.CategoryId,
+                    Price = b.Price,
+                    Quantity = b.Quantity,
+                    AvailableQuantity = b.AvailableQuantity,
+                    ShelfNumber = b.ShelfNumber
+                }).OrderByDescending(x => x.BookId).ToListAsync();
+            return books;
         }
 
         public async Task<CreateBookDto> UpdateBookAsync(int id, CreateBookDto book)

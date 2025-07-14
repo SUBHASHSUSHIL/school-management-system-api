@@ -67,7 +67,7 @@ namespace SMS.API.Services
 
         public async Task<List<EventDto>> GetAllEventAsync(int pageNumber, int pageSize)
         {
-            var events = await _applicationDbContext.Events.OrderByDescending(e => e.CreatedAt)
+            var events = await _applicationDbContext.Events
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(e => new EventDto
@@ -83,8 +83,7 @@ namespace SMS.API.Services
                     Organizer = e.Organizer,
                     CreatedBy = e.CreatedBy,
                     CreatedAt = e.CreatedAt
-                })
-                .ToListAsync();
+                }).OrderByDescending(e => e.EventId).ToListAsync();
             return events;
         }
 

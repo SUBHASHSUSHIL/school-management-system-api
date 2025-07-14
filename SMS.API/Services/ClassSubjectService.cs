@@ -70,7 +70,7 @@ namespace SMS.API.Services
 
         public async Task<List<ClassSubjectDto>> GetClassSubjectsAsync(int pageNumber, int pageSize)
         {
-            var classSubjects = await _applicationDbContext.ClassSubjects.OrderByDescending(x => x.ClassSubjectId)
+            var classSubjects = await _applicationDbContext.ClassSubjects
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(cs => new ClassSubjectDto
@@ -79,8 +79,7 @@ namespace SMS.API.Services
                     ClassId = cs.ClassId,
                     SubjectId = cs.SubjectId,
                     TeacherId = cs.TeacherId
-                })
-                .ToListAsync();
+                }).OrderByDescending(x => x.ClassSubjectId).ToListAsync();
             return classSubjects;
         }
 

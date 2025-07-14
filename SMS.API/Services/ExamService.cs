@@ -58,7 +58,7 @@ namespace SMS.API.Services
 
         public async Task<List<ExamDto>> GetAllExamAsync(int pageNumber, int pageSize)
         {
-            var exams = await _applicationDbContext.Exams.OrderByDescending(e => e.StartDate)
+            var exams = await _applicationDbContext.Exams
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(e => new ExamDto
@@ -70,8 +70,7 @@ namespace SMS.API.Services
                     EndDate=e.EndDate,
                     Description = e.Description,
                     IsPublished=e.IsPublished
-                })
-                .ToListAsync();
+                }).OrderByDescending(e => e.ExamId).ToListAsync();
             return exams;
         }
 

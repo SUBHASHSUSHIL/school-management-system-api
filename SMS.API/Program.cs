@@ -31,6 +31,7 @@ builder.Services.AddScoped<IFeeCategoryService, FeeCategoryService>();
 builder.Services.AddScoped<IFeeStructureService, FeeStructureService>();
 builder.Services.AddScoped<IHomeworkService, HomeworkService>();
 builder.Services.AddScoped<INoticeService, NoticeService>();
+builder.Services.AddScoped<IParentService, ParentService>();
 
 
 var app = builder.Build();

@@ -63,23 +63,23 @@ namespace SMS.API.Services
 
         public async Task<List<BookIssueDto>> GetBookIssueAsync(int pageNumber, int pageSize)
         {
-            var bookIssues = await _applicationDbContext.BookIssues.OrderByDescending(bi => bi.IssueDate)
+            var bookIssues = await _applicationDbContext.BookIssues
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
-                .ToListAsync();
-            return bookIssues.Select(bi => new BookIssueDto
-            {
-                IssueId = bi.IssueId,
-                BookId = bi.BookId,
-                UserId = bi.UserId,
-                IssueDate = bi.IssueDate,
-                DueDate = bi.DueDate,
-                ReturnDate = bi.ReturnDate,
-                Status = bi.Status,
-                FineAmount = bi.FineAmount,
-                Remarks = bi.Remarks,
-                IssuedBy = bi.IssuedBy
-            }).ToList();
+                .Select(bi => new BookIssueDto
+                {
+                    IssueId = bi.IssueId,
+                    BookId = bi.BookId,
+                    UserId = bi.UserId,
+                    IssueDate = bi.IssueDate,
+                    DueDate = bi.DueDate,
+                    ReturnDate = bi.ReturnDate,
+                    Status = bi.Status,
+                    FineAmount = bi.FineAmount,
+                    Remarks = bi.Remarks,
+                    IssuedBy = bi.IssuedBy
+                }).OrderByDescending(x => x.IssueId).ToListAsync();
+            return bookIssues;
         }
 
         public async Task<BookIssueDto> GetByIdAsync(int id)

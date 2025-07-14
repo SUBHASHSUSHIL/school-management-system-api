@@ -66,7 +66,7 @@ namespace SMS.API.Services
         public async Task<IEnumerable<HomeworkDto>> GetAllHomeworksAsync(int pageNumber = 1, int pageSize = 10)
         {
             var homeworks = _applicationDbContext.Homeworks
-                .Skip((pageNumber - 1) * pageSize).OrderByDescending(h => h.HomeworkId)
+                .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(h => new HomeworkDto
                 {
@@ -81,7 +81,7 @@ namespace SMS.API.Services
                     DueDate = h.DueDate,
                     MaxMarks = h.MaxMarks,
                     CreatedAt = h.CreatedAt
-                }).ToListAsync();
+                }).OrderByDescending(h => h.HomeworkId).ToListAsync();
             return await homeworks;
         }
 

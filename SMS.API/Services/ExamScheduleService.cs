@@ -77,7 +77,7 @@ namespace SMS.API.Services
                     MaxMarks = es.MaxMarks,
                     PassingMarks = es.PassingMarks,
                     RoomNumber = es.RoomNumber
-                }).ToListAsync();
+                }).OrderByDescending(x => x.ScheduleId).ToListAsync();
             return examSchedules;
         }
 

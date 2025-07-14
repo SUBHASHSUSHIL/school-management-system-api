@@ -63,7 +63,7 @@ namespace SMS.API.Services
         public async Task<IEnumerable<FeeStructureDto>> GetAllFeeStructuresAsync(int pageNumber, int pageSize)
         {
             var feeStructures = await _applicationDbContext.FeeStructures
-                .Skip((pageNumber - 1) * pageSize).OrderByDescending(f => f.FeeStructureId)
+                .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(f => new FeeStructureDto
                 {
@@ -75,7 +75,7 @@ namespace SMS.API.Services
                     DueDate = f.DueDate,
                     IsActive = f.IsActive,
                     Description = f.Description
-                }).ToListAsync();
+                }).OrderByDescending(f => f.FeeStructureId).ToListAsync();
             return feeStructures;
         }
 

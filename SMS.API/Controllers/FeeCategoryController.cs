@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SMS.API.DTOs;
 using SMS.API.Services.Interfaces;
 
 namespace SMS.API.Controllers

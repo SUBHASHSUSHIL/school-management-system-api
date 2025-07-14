@@ -52,14 +52,14 @@ namespace SMS.API.Services
         public async Task<IEnumerable<FeeCategoryDto>> GetAllAsync(int pageNumber, int pageSize)
         {
             var feeCategories = await _applicationDbContext.FeeCategories
-                .Skip((pageNumber - 1) * pageSize).OrderByDescending(f => f.FeeCategoryId)
+                .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(f => new FeeCategoryDto
                 {
                     FeeCategoryId = f.FeeCategoryId,
                     CategoryName = f.CategoryName,
                     Description = f.Description
-                }).ToListAsync();
+                }).OrderByDescending(f => f.FeeCategoryId).ToListAsync();
             return feeCategories;
         }
 

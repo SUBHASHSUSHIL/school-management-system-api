@@ -47,17 +47,16 @@ namespace SMS.API.Services
 
         public async Task<List<BookCategoryDto>> GetBookCategoriesAsync(int pageNumber, int pageSize)
         {
-            var bookCategories = await _applicationDbContext.BookCategories.OrderByDescending(bc => bc.CategoryId)
+            var bookCategories = await _applicationDbContext.BookCategories
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
-                .ToListAsync();
-
-            return bookCategories.Select(bc => new BookCategoryDto
-            {
-                CategoryId = bc.CategoryId,
-                CategoryName = bc.CategoryName,
-                Description = bc.Description
-            }).ToList();
+                .Select(bc => new BookCategoryDto
+                {
+                    CategoryId = bc.CategoryId,
+                    CategoryName = bc.CategoryName,
+                    Description = bc.Description
+                }).OrderByDescending(bc => bc.CategoryId).ToListAsync();
+            return bookCategories;
         }
 
         public async Task<BookCategoryDto> GetBookCategoryByIdAsync(int id)

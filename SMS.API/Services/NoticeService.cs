@@ -60,7 +60,7 @@ namespace SMS.API.Services
         public async Task<IEnumerable<NoticeDto>> GetAllNoticesAsync(int pageNumber, int pageSize)
         {
             var notices = await _applicationDbContext.Notices
-                .Skip((pageNumber - 1) * pageSize).OrderByDescending(x => x.NoticeId)
+                .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(n => new NoticeDto
                 {
@@ -72,7 +72,7 @@ namespace SMS.API.Services
                     CreatedBy = n.CreatedBy,
                     TargetAudience = n.TargetAudience,
                     IsImportant = n.IsImportant
-                }).ToListAsync();
+                }).OrderByDescending(x => x.NoticeId).ToListAsync();
             return notices;
         }
 

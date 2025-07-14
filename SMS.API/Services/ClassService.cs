@@ -67,18 +67,18 @@ namespace SMS.API.Services
 
         public async Task<List<ClassDto>> GetClassesAsync(int pageNumber, int pageSize)
         {
-            var classes = await _applicationDbContext.Classes.OrderByDescending(x => x.ClassId)
+            var classes = await _applicationDbContext.Classes
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
-                .ToListAsync();
-            return classes.Select(c => new ClassDto
-            {
-                ClassId = c.ClassId,
-                ClassName = c.ClassName,
-                Description = c.Description,
-                TeacherInChargeId = c.TeacherInChargeId,
-                ClassNumeric = c.ClassNumeric
-            }).ToList();
+                .Select(c => new ClassDto
+                {
+                    ClassId = c.ClassId,
+                    ClassName = c.ClassName,
+                    Description = c.Description,
+                    TeacherInChargeId = c.TeacherInChargeId,
+                    ClassNumeric = c.ClassNumeric
+                }).OrderByDescending(c => c.ClassId).ToListAsync();
+            return classes;
         }
 
         public async Task<UpdateClassDto> UpdateClassAsync(int classId, UpdateClassDto updateClassDto)
