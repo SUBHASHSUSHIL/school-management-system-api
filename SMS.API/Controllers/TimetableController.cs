@@ -70,7 +70,7 @@ namespace SMS.API.Controllers
             try
             {
                 var createdTimetable = await _timetableService.CreateTimetableAsync(createTimetable);
-                return CreatedAtAction(nameof(GetTimetableById), new { id = createdTimetable.TimetableId }, createdTimetable);
+                return Ok(createdTimetable);
             }
             catch (Exception ex)
             {

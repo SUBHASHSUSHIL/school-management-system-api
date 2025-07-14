@@ -20,7 +20,7 @@ namespace SMS.API.DTOs
 
         public int TeacherId { get; set; }
 
-        public DayOfWeekEnum DayOfWeek { get; set; } 
+        public DayOfWeekEnum DayOfWeek { get; set; }
 
         public int PeriodNumber { get; set; }
 
@@ -44,7 +44,7 @@ namespace SMS.API.DTOs
         [Required]
         public int TeacherId { get; set; }
         [Required]
-        public DayOfWeekEnum DayOfWeek { get; set; } 
+        public DayOfWeekEnum DayOfWeek { get; set; }
         [Required]
         public int PeriodNumber { get; set; }
         [Required]
@@ -60,3 +60,4 @@ namespace SMS.API.DTOs
         [Required]
         public int TimetableId { get; set; }
     }
+}
