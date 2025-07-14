@@ -33,6 +33,8 @@ builder.Services.AddScoped<IHomeworkService, HomeworkService>();
 builder.Services.AddScoped<INoticeService, NoticeService>();
 builder.Services.AddScoped<IParentService, ParentService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<ISectionService, SectionService>();
+builder.Services.AddScoped<IStaffService, StaffService>();
 
 
 var app = builder.Build();
