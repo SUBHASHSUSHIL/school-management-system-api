@@ -28,6 +28,7 @@ builder.Services.AddScoped<IExamService, ExamService>();
 builder.Services.AddScoped<IExamResultService, ExamResultService>();
 builder.Services.AddScoped<IExamScheduleService, ExamScheduleService>();
 builder.Services.AddScoped<IFeeCategoryService, FeeCategoryService>();
+builder.Services.AddScoped<IFeeStructureService, FeeStructureService>();
 
 
 var app = builder.Build();
