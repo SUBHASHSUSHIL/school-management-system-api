@@ -24,6 +24,8 @@ builder.Services.AddScoped<IBookIssueService, BookIssueService>();
 builder.Services.AddScoped<IClassService, ClassService>();
 builder.Services.AddScoped<IClassSubjectService, ClassSubjectService>();
 builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IExamService, ExamService>();
+builder.Services.AddScoped<IExamResultService, ExamResultService>();
 
 
 var app = builder.Build();

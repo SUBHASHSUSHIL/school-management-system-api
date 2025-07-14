@@ -21,6 +21,10 @@ namespace SMS.API.Controllers
         {
             try
             {
+                if (pageNumber <= 0 || pageSize <= 0)
+                {
+                    return BadRequest("Page number and page size must be greater than zero.");
+                }
                 var bookIssues = await _bookIssueService.GetBookIssueAsync(pageNumber, pageSize);
                 if (bookIssues == null || !bookIssues.Any())
                 {
