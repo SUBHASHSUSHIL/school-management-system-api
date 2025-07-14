@@ -37,6 +37,7 @@ builder.Services.AddScoped<ISectionService, SectionService>();
 builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IStudentFeeService, StudentFeeService>();
+builder.Services.AddScoped<IStudentHomeworkService, StudentHomeworkService>();
 
 
 var app = builder.Build();
