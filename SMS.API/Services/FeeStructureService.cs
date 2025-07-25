@@ -62,7 +62,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<FeeStructureDto>> GetAllFeeStructuresAsync(int pageNumber, int pageSize)
         {
-            var feeStructures = await _applicationDbContext.FeeStructures
+            var feeStructures = await _applicationDbContext.FeeStructures.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(f => new FeeStructureDto

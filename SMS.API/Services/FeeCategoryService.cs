@@ -51,7 +51,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<FeeCategoryDto>> GetAllAsync(int pageNumber, int pageSize)
         {
-            var feeCategories = await _applicationDbContext.FeeCategories
+            var feeCategories = await _applicationDbContext.FeeCategories.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(f => new FeeCategoryDto

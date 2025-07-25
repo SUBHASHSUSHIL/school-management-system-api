@@ -54,8 +54,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<StaffDto>> GetAllStaffAsync(int pageNumber, int pageSize)
         {
-            var staffs = await _applicationDbContext
-                .Staffs
+            var staffs = await _applicationDbContext.Staffs.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(s => new StaffDto

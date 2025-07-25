@@ -58,7 +58,7 @@ namespace SMS.API.Services
 
         public async Task<List<ExamDto>> GetAllExamAsync(int pageNumber, int pageSize)
         {
-            var exams = await _applicationDbContext.Exams
+            var exams = await _applicationDbContext.Exams.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(e => new ExamDto

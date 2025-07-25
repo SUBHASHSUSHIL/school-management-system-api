@@ -64,7 +64,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<ExamResultDto>> GetAllExamResultsAsync(int pageNumber, int pageSize)
         {
-            var examResults = await _applicationDbContext.ExamResults
+            var examResults = await _applicationDbContext.ExamResults.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                .Select(er => new ExamResultDto

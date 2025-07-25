@@ -47,7 +47,7 @@ namespace SMS.API.Services
 
         public async Task<List<BookCategoryDto>> GetBookCategoriesAsync(int pageNumber, int pageSize)
         {
-            var bookCategories = await _applicationDbContext.BookCategories
+            var bookCategories = await _applicationDbContext.BookCategories.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(bc => new BookCategoryDto

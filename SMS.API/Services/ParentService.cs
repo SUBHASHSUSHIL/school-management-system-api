@@ -53,7 +53,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<ParentDto>> GetAllParentsAsync(int pageNumber, int pageSize)
         {
-            var parents = await _applicationDbContext.Parents
+            var parents = await _applicationDbContext.Parents.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(p => new ParentDto

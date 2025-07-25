@@ -63,7 +63,7 @@ namespace SMS.API.Services
 
         public async Task<List<BookIssueDto>> GetBookIssueAsync(int pageNumber, int pageSize)
         {
-            var bookIssues = await _applicationDbContext.BookIssues
+            var bookIssues = await _applicationDbContext.BookIssues.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(bi => new BookIssueDto

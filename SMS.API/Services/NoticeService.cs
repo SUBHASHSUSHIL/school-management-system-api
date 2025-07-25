@@ -59,7 +59,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<NoticeDto>> GetAllNoticesAsync(int pageNumber, int pageSize)
         {
-            var notices = await _applicationDbContext.Notices
+            var notices = await _applicationDbContext.Notices.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(n => new NoticeDto

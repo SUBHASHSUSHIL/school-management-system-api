@@ -63,7 +63,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<TimetableDto>> GetAllTimetablesAsync(int pageNumber, int pageSize)
         {
-            var timetables = await _applicationDbContext.Timetables
+            var timetables = await _applicationDbContext.Timetables.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(t => new TimetableDto

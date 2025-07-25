@@ -67,7 +67,7 @@ namespace SMS.API.Services
 
         public async Task<List<EventDto>> GetAllEventAsync(int pageNumber, int pageSize)
         {
-            var events = await _applicationDbContext.Events
+            var events = await _applicationDbContext.Events.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(e => new EventDto

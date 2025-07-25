@@ -58,7 +58,7 @@ namespace SMS.API.Services
 
         public async Task<List<AcademicYear>> GetAllAcademicYearsAsync(int pageNumber, int pageSize)
         {
-            var academicYears = await _applicationDbContext.AcademicYears
+            var academicYears = await _applicationDbContext.AcademicYears.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize).OrderByDescending(a => a.AcademicYearId)
                 .ToListAsync();

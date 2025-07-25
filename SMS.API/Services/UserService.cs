@@ -51,7 +51,7 @@ namespace SMS.API.Services
 
         public async Task<List<User>> GetAllUsersAsync(int pageNumber, int pageSize)
         {
-            var users = await _applicationDbContext.Users
+            var users = await _applicationDbContext.Users.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize).OrderByDescending(x => x.CreatedAt)
                 .ToListAsync();

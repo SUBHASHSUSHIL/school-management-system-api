@@ -59,7 +59,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<PaymentDto>> GetAllPaymentsAsync(int pageNumber, int pageSize)
         {
-            var payments = await _applicationDbContext.Payments
+            var payments = await _applicationDbContext.Payments.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(p => new PaymentDto

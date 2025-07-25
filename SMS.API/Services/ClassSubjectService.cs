@@ -70,7 +70,7 @@ namespace SMS.API.Services
 
         public async Task<List<ClassSubjectDto>> GetClassSubjectsAsync(int pageNumber, int pageSize)
         {
-            var classSubjects = await _applicationDbContext.ClassSubjects
+            var classSubjects = await _applicationDbContext.ClassSubjects.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(cs => new ClassSubjectDto

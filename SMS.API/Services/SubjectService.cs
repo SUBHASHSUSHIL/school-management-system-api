@@ -53,7 +53,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<SubjectDto>> GetAllSubjectsAsync(int pageNumber, int pageSize)
         {
-            var subjects = await _applicationDbContext.Subjects
+            var subjects = await _applicationDbContext.Subjects.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(s => new SubjectDto

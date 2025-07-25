@@ -54,7 +54,7 @@ namespace SMS.API.Services
 
         public async Task<List<Attendance>> GetAttendanceAsync(int pageNumber, int pageSize)
         {
-            var attendances = await _applicationDbContext.Attendances
+            var attendances = await _applicationDbContext.Attendances.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize).OrderByDescending(x => x.Date)
                 .ToListAsync();

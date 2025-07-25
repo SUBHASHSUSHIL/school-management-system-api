@@ -65,7 +65,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<HomeworkDto>> GetAllHomeworksAsync(int pageNumber = 1, int pageSize = 10)
         {
-            var homeworks = _applicationDbContext.Homeworks
+            var homeworks = _applicationDbContext.Homeworks.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(h => new HomeworkDto

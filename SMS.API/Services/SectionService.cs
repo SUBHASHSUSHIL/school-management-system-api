@@ -56,7 +56,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<SectionDto>> GetAllSectionsAsync(int pageNumber, int pageSize)
         {
-            var sections = await _applicationDbContext.Sections
+            var sections = await _applicationDbContext.Sections.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(s => new SectionDto

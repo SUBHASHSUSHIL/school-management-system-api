@@ -62,7 +62,7 @@ namespace SMS.API.Services
 
         public async Task<IEnumerable<ExamScheduleDto>> GetAllExamSchedulesAsync(int pageNumber, int pageSize)
         {
-            var examSchedules = await _applicationDbContext.ExamSchedules
+            var examSchedules = await _applicationDbContext.ExamSchedules.AsNoTracking()
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Select(es => new ExamScheduleDto
